@@ -106,16 +106,16 @@ const EnhancedFAQSection = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.div
-          className="inline-flex items-center gap-3 mb-4"
+          className="inline-flex items-center gap-2 sm:gap-3 mb-4"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <HelpCircle className="text-yellow-400" size={32} />
-          <Sparkles className="text-yellow-400" size={24} />
+          <HelpCircle className="text-yellow-400 w-6 h-6 sm:w-8 sm:h-8" />
+          <Sparkles className="text-yellow-400 w-5 h-5 sm:w-6 sm:h-6" />
         </motion.div>
         
         <motion.h2 
-          className="text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent"
           animate={{ 
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
           }}
@@ -128,7 +128,7 @@ const EnhancedFAQSection = () => {
         </motion.h2>
         
         <motion.p
-          className="text-gray-400 text-lg"
+          className="text-gray-400 text-base sm:text-lg"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}

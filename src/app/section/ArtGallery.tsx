@@ -151,7 +151,7 @@ export default function ArtGallery() {
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             Grumpy has a full team of artists behind him, dropping fresh, custom pieces every single day.
             <br />
-            <span className="text-yellow-400 font-semibold">Each piece tells a story of chaos, triumph, and pure degen energy.</span>
+            {/* <span className="text-yellow-400 font-semibold">Each piece tells a story of chaos, triumph, and pure degen energy.</span> */}
           </p>
           
 
@@ -218,7 +218,7 @@ export default function ArtGallery() {
         </div>
       </div>
 
-      {/* Optimized CSS with Glow Effects */}
+      {/* Enhanced CSS with Advanced Effects */}
       <style jsx>{`
         .art-gallery-container {
           will-change: transform;
@@ -231,15 +231,36 @@ export default function ArtGallery() {
           100% { background-position: 0% 50%; }
         }
         
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(251, 193, 83, 0.4); }
+          50% { box-shadow: 0 0 30px rgba(251, 193, 83, 0.8), 0 0 40px rgba(251, 193, 83, 0.4); }
+        }
+        
         .glow-effect {
-          box-shadow: 0 0 20px rgba(251, 193, 83, 0.4);
+          animation: glow 2s ease-in-out infinite;
         }
         
         .swiper-slide {
           height: auto !important;
         }
         
-
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        
+        .transform-gpu {
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
+        
+        .group:hover .animate-pulse {
+          animation: float 2s ease-in-out infinite;
+        }
       `}</style>
 
       {/* Floating Scroll Buttons for Mobile */}
@@ -311,19 +332,20 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
   return (
     <motion.div
       whileHover={{ 
-        scale: 1.05,
-        transition: { duration: 0.2 }
+        scale: 1.08,
+        rotateY: 5,
+        transition: { duration: 0.3, ease: "easeOut" }
       }}
-      className="group cursor-pointer"
+      className="group cursor-pointer perspective-1000"
     >
-      <div className="relative w-full bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-yellow-500/60 transition-all duration-300 overflow-hidden shadow-xl group-hover:shadow-2xl group-hover:shadow-yellow-500/30">
+      <div className="relative w-full bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-yellow-500/60 transition-all duration-300 overflow-hidden shadow-xl group-hover:shadow-2xl group-hover:shadow-yellow-500/30 transform-gpu">
         
-        {/* Glow Border Effect */}
-        <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+        {/* Animated Glow Border Effect */}
+        <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-700"
              style={{
-               background: 'linear-gradient(45deg, #FBC153, #F59E0B, #DC2626, #FBC153)',
+               background: 'linear-gradient(45deg, #FBC153, #F59E0B, #DC2626, #FBC153, #8B5CF6, #FBC153)',
                backgroundSize: '400% 400%',
-               animation: 'gradientShift 3s ease infinite'
+               animation: 'gradientShift 2s ease infinite'
              }}>
         </div>
         
@@ -335,7 +357,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
             {isVideo ? (
               <video
                 src={artwork.image}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ease-out"
                 autoPlay
                 muted
                 loop
@@ -347,35 +369,36 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
                 src={artwork.image}
                 alt={artwork.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover group-hover:scale-110 transition-all duration-500 ease-out"
                 sizes="(max-width: 640px) 25vw, 25vw"
               />
             )}
-          </div>
-          
-          {/* Artwork Info */}
-          <div className="p-4">
-            <h3 className="text-sm sm:text-base font-bold text-yellow-400 truncate mb-2">{artwork.title}</h3>
-            <p className="text-xs sm:text-sm text-gray-400 line-clamp-2 leading-tight">{artwork.description}</p>
-          </div>
-
-          {/* Enhanced Hover Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center rounded-xl">
-            <div className="text-center text-white transform scale-90 group-hover:scale-100 transition-transform duration-300 p-4">
-              <h3 className="text-lg font-bold mb-2 text-yellow-400 drop-shadow-lg">{artwork.title}</h3>
-              <p className="text-sm text-gray-200 leading-relaxed drop-shadow-md">{artwork.description}</p>
-            </div>
+            
+            {/* Subtle Overlay on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            
+            {/* Animated Corner Glow */}
+            <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-orange-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-8 translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0"></div>
           </div>
 
-          {/* Simple indicator */}
-          <div className="absolute top-3 right-3 w-2 h-2 bg-yellow-400/60 rounded-full"></div>
-          
+          {/* Floating Particles Effect */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-4 left-4 w-1 h-1 bg-yellow-400/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500 delay-100"></div>
+            <div className="absolute top-6 right-6 w-1.5 h-1.5 bg-orange-400/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500 delay-200"></div>
+            <div className="absolute bottom-4 left-6 w-1 h-1 bg-purple-400/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500 delay-300"></div>
+            <div className="absolute bottom-6 right-4 w-1.5 h-1.5 bg-blue-400/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500 delay-400"></div>
+          </div>
+
           {/* Video indicator */}
           {isVideo && (
-            <div className="absolute top-3 left-3 w-6 h-6 bg-red-500/80 rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
+            <div className="absolute top-3 left-3 w-8 h-8 bg-red-500/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="w-0 h-0 border-l-[8px] border-l-white border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent ml-1"></div>
             </div>
           )}
+          
+          {/* Corner Ribbon Effect */}
+          <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-yellow-400/80 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
         </div>
       </div>
     </motion.div>

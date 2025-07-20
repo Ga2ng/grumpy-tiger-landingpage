@@ -1,36 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 
 export default function AboutSection() {
   const [isHovered, setIsHovered] = useState(false);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-
-  const textContent = [
-    {
-      highlight: "$GRUMPY",
-      text: "was born in the chaos. He trades wild, bets big, and laughs at the risk.",
-      emotion: "😤"
-    },
-    {
-      highlight: "living",
-      text: "Some call it reckless. He calls it living.",
-      emotion: "🔥"
-    },
-    {
-      highlight: "more",
-      text: "Memecoins made him. Now he's out for more.",
-      emotion: "💎"
-    }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextIndex(prev => (prev + 1) % textContent.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section id="about" className="relative z-10 max-w-7xl mx-auto px-6 py-20 overflow-hidden">
@@ -110,7 +84,7 @@ export default function AboutSection() {
 
                 {/* Speech Bubble */}
                 <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-12 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-3 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-2xl font-bold text-xs sm:text-sm lg:text-base whitespace-nowrap shadow-xl">
-                  <span className="mr-2">{textContent[currentTextIndex].emotion}</span>
+                  <span className="mr-2">😤</span>
                   Let me tell you...
                   <div className="absolute bottom-0 left-6 w-0 h-0 border-l-4 border-r-4 border-t-8 border-transparent border-t-orange-500 transform translate-y-full" />
                 </div>
@@ -130,9 +104,8 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 to-orange-500/5 rounded-2xl" />
                 
                 <div className="relative z-10">
-                  {/* Animated Text Content */}
+                  {/* Static Text Content */}
                   <motion.div
-                    key={currentTextIndex}
                     className="text-xl lg:text-2xl leading-relaxed text-gray-300 mb-8"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -149,55 +122,89 @@ export default function AboutSection() {
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
-                      {textContent[currentTextIndex].highlight}
+                      $GRUMPY
                     </motion.span>{' '}
-                    {textContent[currentTextIndex].text.replace(textContent[currentTextIndex].highlight, '')}
+                    was born in the chaos. He trades wild, bets big, and laughs at the risk. Some call it reckless. He calls it living. Memecoins made him. Now he's out for more.
                   </motion.div>
-
-                  {/* Enhanced Progress Dots */}
-                  <div className="flex justify-center space-x-3 mb-8">
-                    {textContent.map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          i === currentTextIndex ? 'bg-yellow-400' : 'bg-gray-600'
-                        }`}
-                        animate={{
-                          scale: i === currentTextIndex ? [1, 1.3, 1] : 1,
-                          opacity: i === currentTextIndex ? 1 : 0.5
-                        }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    ))}
-                  </div>
 
                   {/* Enhanced CTA Section */}
                   <div className="text-center">
                     <motion.button
-                      className="group px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold text-lg rounded-full shadow-2xl relative overflow-hidden"
+                      className="group relative px-12 py-5 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 text-gray-900 font-bold text-xl rounded-full shadow-2xl overflow-hidden"
                       whileHover={{ 
                         scale: 1.05,
-                        boxShadow: '0 20px 40px rgba(251, 193, 83, 0.3)'
+                        boxShadow: '0 25px 50px rgba(251, 193, 83, 0.4)'
                       }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <span className="relative z-10 flex items-center gap-2">
-                        Join the Chaos! 
+                      {/* Animated Background */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400"
+                        animate={{
+                          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                        style={{ backgroundSize: '200% 200%' }}
+                      />
+                      
+                      {/* Content */}
+                      <span className="relative z-10 flex items-center gap-3">
                         <motion.span
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
+                          animate={{ 
+                            rotate: [0, 10, -10, 0],
+                            scale: [1, 1.1, 1]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          🚀
+                        </motion.span>
+                        JOIN OUR TELEGRAM COMMUNITY!
+                        <motion.span
+                          animate={{ 
+                            rotate: [0, -10, 10, 0],
+                            scale: [1, 1.1, 1]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                         >
                           🚀
                         </motion.span>
                       </span>
                       
-                      {/* Button glow effect */}
+                      {/* Glow Effect */}
                       <motion.div
                         className="absolute inset-0 bg-white/20 rounded-full"
                         initial={{ scale: 0, opacity: 0 }}
                         whileHover={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      
+                      {/* Particle Effects */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        <motion.div
+                          className="absolute top-2 left-4 w-1 h-1 bg-white/60 rounded-full"
+                          animate={{
+                            y: [0, -20, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                        />
+                        <motion.div
+                          className="absolute top-4 right-6 w-1.5 h-1.5 bg-white/60 rounded-full"
+                          animate={{
+                            y: [0, -15, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                        />
+                        <motion.div
+                          className="absolute bottom-3 left-8 w-1 h-1 bg-white/60 rounded-full"
+                          animate={{
+                            y: [0, -25, 0],
+                            opacity: [0, 1, 0]
+                          }}
+                          transition={{ duration: 1.5, repeat: Infinity, delay: 1 }}
+                        />
+                      </div>
                     </motion.button>
                   </div>
                 </div>
