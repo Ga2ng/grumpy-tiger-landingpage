@@ -7,7 +7,7 @@ export default function AboutSection() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section id="about" className="relative z-10 max-w-7xl mx-auto px-6 py-20 overflow-hidden">
+    <section id="about" className="relative z-10 max-w-7xl mx-auto px-6 py-12 sm:py-20 overflow-hidden">
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full blur-xl"></div>
@@ -25,9 +25,9 @@ export default function AboutSection() {
         {/* Inner glow effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 via-transparent to-orange-500/5 pointer-events-none" />
         
-        <div className="relative p-8 lg:p-16">
+        <div className="relative p-6 sm:p-8 lg:p-16">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <motion.h2 
               className="text-5xl lg:text-7xl font-black mb-8 relative inline-block" 
               style={{ color: '#FBC153' }}

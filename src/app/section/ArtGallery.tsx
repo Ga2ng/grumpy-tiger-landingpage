@@ -135,7 +135,7 @@ export default function ArtGallery() {
   };
 
   return (
-    <section id="art" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 pb-32 sm:pb-20">
+    <section id="art" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 pb-20 sm:pb-32">
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-5 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full blur-xl"></div>
@@ -144,7 +144,7 @@ export default function ArtGallery() {
 
       <div ref={ref} className="relative">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 lg:mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6" style={{ color: '#FBC153' }}>
             Art Gallery
           </h2>
@@ -207,7 +207,7 @@ export default function ArtGallery() {
 
 
         {/* Call to Action */}
-        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+        <div className="text-center mt-8 sm:mt-12 lg:mt-16 lg:mt-20">
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

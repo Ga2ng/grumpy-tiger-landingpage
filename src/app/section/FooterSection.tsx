@@ -163,7 +163,7 @@ export default function FooterSection() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
+        <div className="relative z-10 max-w-7xl mx-auto px-8 py-12 sm:py-16">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16">
             

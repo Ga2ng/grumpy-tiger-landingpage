@@ -93,7 +93,7 @@ export default function GrumpyLandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section id="hero" className="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+      <section id="hero" className="relative z-10 max-w-7xl mx-auto px-6 py-12 sm:py-16 text-center">
         {/* Simplified Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full blur-xl"></div>
@@ -230,8 +230,8 @@ export default function GrumpyLandingPage() {
       <MarqueeBanner />
 
       {/* Official Links Section */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-8 sm:py-16">
+        <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#FBC153' }}>
             Official Links
           </h2>

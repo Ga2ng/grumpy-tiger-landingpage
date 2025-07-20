@@ -71,7 +71,7 @@ const EnhancedFAQSection = () => {
   };
 
   return (
-    <section id="faq" className="relative z-10 max-w-4xl mx-auto px-6 py-20" style={{ zIndex: 1 }}>
+    <section id="faq" className="relative z-10 max-w-4xl mx-auto px-6 py-12 sm:py-20" style={{ zIndex: 1 }}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
@@ -99,7 +99,7 @@ const EnhancedFAQSection = () => {
 
       {/* Header with animation */}
       <motion.div
-        className="text-center mb-16"
+        className="text-center mb-12 sm:mb-16"
         variants={headerVariants}
         initial="hidden"
         whileInView="visible"
