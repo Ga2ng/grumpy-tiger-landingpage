@@ -1,8 +1,12 @@
 'use client';
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 
 interface Artwork {
   id: number | string;
@@ -19,14 +23,6 @@ export default function ArtGallery() {
     rootMargin: '-50px 0px'
   });
 
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("animate");
-    }
-  }, [inView, controls]);
-
   const artworks: Artwork[] = [
     {
       id: 1,
@@ -40,42 +36,42 @@ export default function ArtGallery() {
       title: "Tiger's Den",
       image: "/assets/grumpy2.png",
       description: "Grumpy in his natural habitat - the trading floor",
-      row: 1  // Diubah dari row 2 ke row 1
+      row: 1
     },
     {
       id: 3,
       title: "Solana Nights",
       image: "/assets/grumpy3.png",
       description: "Neon-lit Grumpy conquering the Solana blockchain",
-      row: 3
+      row: 2
     },
     {
       id: 4,
       title: "Chaos Theory",
       image: "/assets/grumpy4.JPG",
       description: "When Grumpy meets market volatility",
-      row: 4
+      row: 2
     },
     {
       id: 5,
       title: "Tiger's Triumph",
       image: "/assets/grumpy5.JPG",
       description: "Victory pose after a successful trade",
-      row: 2  // Diubah dari row 1 ke row 2 untuk menyeimbangkan
+      row: 3
     },
     {
       id: 6,
       title: "Digital Dominion",
       image: "/assets/grumpy6.JPG",
       description: "Grumpy ruling the digital realm",
-      row: 2
+      row: 3
     },
     {
       id: 7,
       title: "Traditional Tiger",
       image: "/assets/grumpy-vid1.MP4",
       description: "Hand-drawn Grumpy with traditional techniques",
-      row: 3
+      row: 4
     },
     {
       id: 8,
@@ -86,24 +82,14 @@ export default function ArtGallery() {
     }
   ];
 
-  // Create seamless marquee flow with memoization
-  const marqueeArtworks = useMemo(() => {
-    const flow: Artwork[] = [];
-    // Create 4 complete cycles for perfect seamless loop
-    for (let cycle = 0; cycle < 4; cycle++) {
-      artworks.forEach((artwork, index) => {
-        flow.push({
-          ...artwork,
-          id: `${artwork.id}-cycle-${cycle}`,
-          row: ((index + cycle * 8) % 4) + 1
-        });
-      });
-    }
-    return flow;
+  // Create infinite loop array
+  const infiniteArtworks = useMemo(() => {
+    const looped = [...artworks, ...artworks, ...artworks, ...artworks];
+    return looped;
   }, []);
 
-  // Responsive row grouping based on screen size with memoization
-  const getResponsiveRows = useCallback(() => {
+  // Responsive row grouping based on screen size
+  const getResponsiveRows = () => {
     if (typeof window !== 'undefined') {
       const width = window.innerWidth;
       if (width < 640) return 2; // Mobile: 2 rows
@@ -111,7 +97,7 @@ export default function ArtGallery() {
       return 4; // Desktop: 4 rows
     }
     return 4; // Default to 4 rows
-  }, []);
+  };
 
   const [rowCount, setRowCount] = useState(4);
 
@@ -124,7 +110,7 @@ export default function ArtGallery() {
     const debouncedResize = debounce(updateRowCount, 100);
     window.addEventListener('resize', debouncedResize);
     return () => window.removeEventListener('resize', debouncedResize);
-  }, [getResponsiveRows]);
+  }, []);
 
   // Debounce function for performance
   function debounce(func: Function, wait: number) {
@@ -139,10 +125,10 @@ export default function ArtGallery() {
     };
   }
 
-  // Group artworks by row dynamically with memoization
-  const getRowArtworks = useCallback((rowNumber: number) => {
-    return marqueeArtworks.filter(art => art.row === rowNumber);
-  }, [marqueeArtworks]);
+  // Group artworks by row
+  const getRowArtworks = (rowNumber: number) => {
+    return infiniteArtworks.filter((_, index) => (index % 4) + 1 === rowNumber);
+  };
 
   return (
     <section id="art" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
@@ -165,15 +151,14 @@ export default function ArtGallery() {
           </p>
         </div>
 
-        {/* Optimized Rolling Gallery Container */}
-        <div className="relative overflow-hidden min-h-[1000px] sm:min-h-[1200px] md:min-h-[1400px] lg:min-h-[1600px] art-gallery-container">
+        {/* Swiper Gallery Container */}
+        <div className="relative overflow-hidden min-h-[1000px] sm:min-h-[1200px] md:min-h-[1400px] lg:min-h-[1600px]">
           
-          {/* Optimized Dynamic Rows */}
+          {/* Swiper Rows with Opposite Directions */}
           {Array.from({ length: rowCount }, (_, rowIndex) => {
             const rowNumber = rowIndex + 1;
             const rowArtworks = getRowArtworks(rowNumber);
-            const isMovingDown = rowIndex % 2 === 0;
-            const duration = 35 + (rowIndex * 5); // Optimized duration for perfect loop
+            const isMovingDown = rowIndex % 2 === 0; // Even rows move down, odd rows move up
             
             return (
               <div 
@@ -184,27 +169,29 @@ export default function ArtGallery() {
                   (rowIndex === 0 ? 'left-0 w-1/4' : rowIndex === 1 ? 'left-1/4 w-1/4' : rowIndex === 2 ? 'left-1/2 w-1/4' : 'left-3/4 w-1/4')
                 }`}
               >
-                <motion.div
-                  className="flex flex-col gap-3 sm:gap-4"
-                  animate={controls}
-                  variants={{
-                    initial: { y: isMovingDown ? 0 : -2000 },
-                    animate: {
-                      y: isMovingDown ? [0, -2000] : [-2000, 0],
-                      transition: {
-                        duration: duration,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }
-                    }
+                <Swiper
+                  direction="vertical"
+                  slidesPerView="auto"
+                  spaceBetween={16}
+                  loop={true}
+                  autoplay={{
+                    delay: 0,
+                    disableOnInteraction: false,
+                    reverseDirection: rowIndex % 2 === 1
                   }}
+                  speed={isMovingDown ? 3000 : 2500}
+                  modules={[Autoplay]}
+                  className="h-full"
+                  style={{ height: '100%' }}
                 >
                   {rowArtworks.map((artwork: Artwork, index: number) => (
-                    <div key={`${artwork.id}-${index}`} className="w-full">
-                      <ArtworkCard artwork={artwork} />
-                    </div>
+                    <SwiperSlide key={`${artwork.id}-${index}`} style={{ height: 'auto' }}>
+                      <div className="w-full">
+                        <ArtworkCard artwork={artwork} />
+                      </div>
+                    </SwiperSlide>
                   ))}
-                </motion.div>
+                </Swiper>
               </div>
             );
           })}
@@ -238,6 +225,10 @@ export default function ArtGallery() {
         
         .glow-effect {
           box-shadow: 0 0 20px rgba(251, 193, 83, 0.4);
+        }
+        
+        .swiper-slide {
+          height: auto !important;
         }
       `}</style>
     </section>
