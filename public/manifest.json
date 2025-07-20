@@ -1,0 +1,21 @@
+{
+  "name": "GRUMPY - The Tiger of Solana",
+  "short_name": "GRUMPY",
+  "description": "The most ruthlessly honest memecoin on Solana. Built by grumps, for grumps.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FBC153",
+  "icons": [
+    {
+      "src": "/assets/grumpy_tiger.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/grumpy_tiger.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
