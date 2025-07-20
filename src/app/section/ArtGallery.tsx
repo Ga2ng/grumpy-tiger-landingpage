@@ -5,6 +5,10 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
+import { 
+  FaRocket,
+  FaHome
+} from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
@@ -131,7 +135,7 @@ export default function ArtGallery() {
   };
 
   return (
-    <section id="art" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <section id="art" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 pb-32 sm:pb-20">
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-5 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full blur-xl"></div>
@@ -149,6 +153,8 @@ export default function ArtGallery() {
             <br />
             <span className="text-yellow-400 font-semibold">Each piece tells a story of chaos, triumph, and pure degen energy.</span>
           </p>
+          
+
         </div>
 
         {/* Swiper Gallery Container */}
@@ -198,6 +204,8 @@ export default function ArtGallery() {
 
         </div>
 
+
+
         {/* Call to Action */}
         <div className="text-center mt-12 sm:mt-16 lg:mt-20">
           <motion.button 
@@ -230,7 +238,68 @@ export default function ArtGallery() {
         .swiper-slide {
           height: auto !important;
         }
+        
+
       `}</style>
+
+      {/* Floating Scroll Buttons for Mobile */}
+      <div className="block sm:hidden fixed bottom-6 right-6 z-[99999] flex flex-col gap-3">
+        {/* Spacer untuk memastikan button tidak tertutup */}
+        <div className="h-32"></div>
+        {/* Scroll Down Button */}
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileTap={{ scale: 0.9 }}
+          className="relative w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl border-2 border-white/20 overflow-hidden group"
+          onClick={() => window.scrollBy({ top: 500, behavior: 'smooth' })}
+        >
+          {/* Grumpy Tiger Background */}
+          <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+            <Image
+              src="/assets/grumpy_tiger.png"
+              alt="Grumpy Scroll"
+              fill
+              className="object-contain"
+            />
+          </div>
+          
+          {/* Scroll Down Icon */}
+          <div className="relative z-10 flex flex-col items-center">
+            <FaRocket className="text-lg text-black" />
+            <span className="text-xs font-bold text-black">Scroll</span>
+          </div>
+          
+          {/* Glow Effect */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </motion.button>
+
+        {/* Scroll Up Button */}
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: -5 }}
+          whileTap={{ scale: 0.9 }}
+          className="relative w-16 h-16 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full flex items-center justify-center shadow-2xl border-2 border-white/20 overflow-hidden group"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          {/* Grumpy Tiger Background */}
+          <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+            <Image
+              src="/assets/grumpy_tiger.png"
+              alt="Grumpy Scroll"
+              fill
+              className="object-contain"
+            />
+          </div>
+          
+          {/* Scroll Up Icon */}
+          <div className="relative z-10 flex flex-col items-center">
+            <FaHome className="text-lg text-white" />
+            <span className="text-xs font-bold text-white">Top</span>
+          </div>
+          
+          {/* Glow Effect */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </motion.button>
+      </div>
     </section>
   );
 }

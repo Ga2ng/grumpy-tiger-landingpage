@@ -21,9 +21,9 @@ export default function FooterSection() {
   ];
 
   return (
-    <footer className="relative z-10 overflow-hidden">
+    <footer className="relative z-10 overflow-hidden" style={{ zIndex: 1 }}>
       {/* SECTION 1: Banner Image Section */}
-      <div className="relative h-80 lg:h-96">
+      <div className="relative h-96 sm:h-80 lg:h-96">
         {/* Banner Background */}
         <div className="absolute inset-0">
           <Image 
@@ -64,20 +64,20 @@ export default function FooterSection() {
         </div>
 
                  {/* Content pada Banner Section */}
-         <div className="relative z-10 h-full flex items-center justify-center">
+         <div className="relative z-10 h-full flex items-center justify-center py-8 sm:py-0">
            <motion.div 
-             className="text-center px-8 max-w-4xl mx-auto"
+             className="text-center px-4 sm:px-8 max-w-4xl mx-auto"
              initial={{ opacity: 0, y: 30 }}
              whileInView={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8 }}
              viewport={{ once: true }}
            >
              <motion.h2 
-               className="text-4xl lg:text-6xl font-black mb-6 text-white drop-shadow-2xl"
+               className="text-3xl sm:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 text-white drop-shadow-2xl leading-tight"
                whileHover={{ scale: 1.02 }}
                transition={{ type: "spring", stiffness: 300 }}
              >
-               <span className="block text-white">
+               <span className="block text-white mb-2">
                  Ready to Get
                </span>
                <span className="block bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
@@ -86,7 +86,7 @@ export default function FooterSection() {
              </motion.h2>
              
              <motion.p 
-               className="text-lg lg:text-xl text-gray-100 mb-8 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-lg"
+               className="text-base sm:text-lg lg:text-xl text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
                initial={{ opacity: 0 }}
                whileInView={{ opacity: 1 }}
                transition={{ duration: 0.8, delay: 0.2 }}
@@ -96,14 +96,14 @@ export default function FooterSection() {
              </motion.p>
 
              <motion.div 
-               className="flex flex-col sm:flex-row gap-4 justify-center"
+               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.4 }}
                viewport={{ once: true }}
              >
                <motion.button
-                 className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base"
                  whileHover={{ scale: 1.05, y: -2 }}
                  whileTap={{ scale: 0.95 }}
                >
@@ -111,7 +111,7 @@ export default function FooterSection() {
                </motion.button>
                
                <motion.button
-                 className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300 backdrop-blur-sm bg-black/30"
+                 className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300 backdrop-blur-sm bg-black/30 text-sm sm:text-base"
                  whileHover={{ scale: 1.05, y: -2 }}
                  whileTap={{ scale: 0.95 }}
                >

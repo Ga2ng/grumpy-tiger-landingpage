@@ -71,7 +71,7 @@ const EnhancedFAQSection = () => {
   };
 
   return (
-    <section id="faq" className="relative z-10 max-w-4xl mx-auto px-6 py-20">
+    <section id="faq" className="relative z-10 max-w-4xl mx-auto px-6 py-20" style={{ zIndex: 1 }}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
