@@ -234,56 +234,16 @@ export default function FooterSection() {
               </motion.div>
             </motion.div>
 
-            {/* Quick Links */}
+            {/* Social Links - diperluas agar seimbang */}
             <motion.div 
-              className="text-center lg:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-bold mb-6 text-yellow-400">Quick Links</h3>
-              <div className="space-y-3">
-                {footerLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    className="block group relative py-2 px-4 text-gray-300 hover:text-yellow-400 transition-all duration-300 rounded-lg border border-transparent hover:border-yellow-400/30 hover:bg-yellow-400/5"
-                    onHoverStart={() => setHoveredLink(link.name)}
-                    onHoverEnd={() => setHoveredLink(null)}
-                    whileHover={{ scale: 1.03, x: 5 }}
-                    whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 * index }}
-                    viewport={{ once: true }}
-                  >
-                    <span className="relative z-10">📄 {link.name}</span>
-                    {hoveredLink === link.name && (
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-orange-400/10 rounded-lg"
-                        layoutId="hoverBackground"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div 
-              className="text-center lg:text-left"
+              className="lg:col-span-2 text-center lg:text-left flex flex-col items-center lg:items-start justify-center"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">Join the Grump</h3>
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-2 gap-3 mb-6 max-w-xs w-full mx-auto lg:mx-0">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
@@ -317,10 +277,10 @@ export default function FooterSection() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                                 <div className="text-yellow-400 font-bold mb-2">Contract Address:</div>
-                 <div className="text-xs text-gray-400 bg-gray-800/50 p-2 rounded-lg font-mono break-all">
-                   Coming Soon...
-                 </div>
+                <div className="text-yellow-400 font-bold mb-2">Contract Address:</div>
+                <div className="text-xs text-gray-400 bg-gray-800/50 p-2 rounded-lg font-mono break-all">
+                  Coming Soon...
+                </div>
               </motion.div>
             </motion.div>
           </div>

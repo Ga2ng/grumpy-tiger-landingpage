@@ -368,7 +368,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
         <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-800/95 to-gray-900/95 m-0.5 group-hover:glow-effect">
           
           {/* Artwork Image/Video */}
-          <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+          <div className="relative w-full aspect-square overflow-hidden">
             {isVideo ? (
               <video
                 src={artwork.image}
@@ -388,7 +388,6 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
                 sizes="(max-width: 640px) 25vw, 25vw"
               />
             )}
-            
           </div>
 
           {/* Video indicator */}
