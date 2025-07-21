@@ -131,22 +131,22 @@ export default function GrumpyLandingPage() {
           </div>
           
           {/* Title */}
-          <div className="mb-8">
-            <h1 className="text-7xl md:text-9xl font-black mb-4 bg-gradient-to-r from-white via-yellow-400 to-orange-500 bg-clip-text text-transparent">
+          <div className="mb-8 text-center">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-4 bg-gradient-to-r from-white via-yellow-400 to-orange-500 bg-clip-text text-transparent leading-tight">
               GRUMPY
             </h1>
-            <div className="text-2xl md:text-3xl mb-6">
-              <span className="text-gray-300">The Tiger of </span>
-              <div className="inline-flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-6">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">The Tiger of</span>
+              <div className="flex items-center gap-2 sm:gap-3">
                 <motion.div
                   className="relative group"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <SiSolana className="w-8 h-8 md:w-10 md:h-10 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                  <SiSolana className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-green-400 blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </motion.div>
-                <span className="bg-gradient-to-r from-purple-400 via-blue-500 to-green-400 bg-clip-text text-transparent font-bold">Solana</span>
+                <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-purple-400 via-blue-500 to-green-400 bg-clip-text text-transparent font-bold">Solana</span>
               </div>
             </div>
             
