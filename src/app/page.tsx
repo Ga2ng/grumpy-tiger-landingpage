@@ -183,9 +183,9 @@ export default function GrumpyLandingPage() {
                 <span className="text-sm font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-green-400 bg-clip-text text-transparent tracking-wide">Solana</span>
               </div>
             </motion.div> */}
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            {/* <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Born in chaos, built for degeneracy. <span style={{color: '#FBC153'}} className="font-semibold">$GRUMPY</span> doesn't just trade - he conquers.
-            </p>
+            </p> */}
           </div>
 
           {/* Contract Address */}

@@ -2,15 +2,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { FaTelegram } from 'react-icons/fa';
 
 export default function FooterSection() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const socialLinks = [
     { name: 'Twitter', icon: '𝕏', href: '#' },
-    { name: 'Discord', icon: '💬', href: '#' },
-    { name: 'Telegram', icon: '✈️', href: '#' },
-    { name: 'GitHub', icon: '⚡', href: '#' }
+    { name: 'Telegram', icon: <FaTelegram />, href: '#' }
   ];
 
   const footerLinks = [
@@ -190,48 +189,37 @@ export default function FooterSection() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                The most ruthlessly honest memecoin on Solana. Built by grumps, for grumps. No fluff, no fake promises - just pure, unfiltered grumpiness that cuts through the crypto noise.
+                Grumpy was born on Bonk.fun, now he’s running wild.
+                We back artists, builders, and anyone chasing the fun.
+                It’s not just a token. It’s a vibe.
               </motion.p>
               
+              
+              {/* Token Info */}
               <motion.div 
-                className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <span className="px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-yellow-300 text-sm font-medium">
-                  🔗 Built on Solana
-                </span>
-                <span className="px-4 py-2 bg-orange-400/10 border border-orange-400/30 rounded-full text-orange-300 text-sm font-medium">
-                  👥 Community Driven
-                </span>
-                <span className="px-4 py-2 bg-amber-400/10 border border-amber-400/30 rounded-full text-amber-300 text-sm font-medium">
-                  😤 100% Grumpy
-                </span>
-              </motion.div>
-
-              {/* Stats */}
-              <motion.div 
-                className="grid grid-cols-3 gap-4 text-center lg:text-left"
+                className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 text-center lg:text-left mt-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div>
-                  <div className="text-2xl font-bold text-yellow-400">😤</div>
-                  <div className="text-gray-400 text-sm">Pure Grumpiness</div>
+                <div className="bg-gradient-to-br from-yellow-400/10 to-orange-400/10 border border-yellow-400/30 rounded-lg p-2 sm:p-3 md:p-4">
+                  <div className="text-base sm:text-lg font-bold text-yellow-400 mb-0.5">SUPPLY</div>
+                  <div className="text-xs sm:text-sm text-gray-300">1,000,000,000</div>
+                  <div className="text-xs text-yellow-400 font-semibold">$GRUMPY</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-orange-400">⚡</div>
-                  <div className="text-gray-400 text-sm">Lightning Fast</div>
+                <div className="bg-gradient-to-br from-orange-400/10 to-red-400/10 border border-orange-400/30 rounded-lg p-2 sm:p-3 md:p-4">
+                  <div className="text-base sm:text-lg font-bold text-orange-400 mb-0.5">LP BURNT</div>
+                  <div className="text-xs sm:text-sm text-gray-300">100%</div>
+                  <div className="text-xs text-orange-400 font-semibold">PERMANENT</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-amber-400">🔥</div>
-                  <div className="text-gray-400 text-sm">Always Hot</div>
+                <div className="bg-gradient-to-br from-red-400/10 to-pink-400/10 border border-red-400/30 rounded-lg p-2 sm:p-3 md:p-4">
+                  <div className="text-base sm:text-lg font-bold text-red-400 mb-0.5">MINT & FREEZE</div>
+                  <div className="text-xs sm:text-sm text-gray-300">REVOKED</div>
+                  <div className="text-xs text-red-400 font-semibold">SECURE</div>
                 </div>
               </motion.div>
+
             </motion.div>
 
             {/* Social Links - diperluas agar seimbang */}
@@ -242,7 +230,8 @@ export default function FooterSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-yellow-400">Join the Grump</h3>
+              <h3 className="text-2xl font-bold mb-6 text-yellow-400">SOCIALS</h3>
+              <h4 className="text-lg font-semibold mb-6 text-gray-300">Join the GRUMPY Community</h4>
               <div className="grid grid-cols-2 gap-3 mb-6 max-w-xs w-full mx-auto lg:mx-0">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -261,7 +250,7 @@ export default function FooterSection() {
                     viewport={{ once: true }}
                   >
                     <span className="text-xl group-hover:scale-110 transition-transform duration-200">
-                      {social.icon}
+                      {typeof social.icon === 'string' ? social.icon : social.icon}
                     </span>
                     <span className="text-sm font-medium text-gray-300 group-hover:text-yellow-400 transition-colors">
                       {social.name}
@@ -282,18 +271,19 @@ export default function FooterSection() {
                   Coming Soon...
                 </div>
               </motion.div>
+
             </motion.div>
           </div>
 
           {/* Bottom Section */}
           <motion.div 
-            className="border-t border-yellow-400/20 pt-8"
+            className="pt-8 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+            {/* <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
               <div className="text-gray-400 text-sm text-center lg:text-left">
                 <div className="mb-2">© 2024 GRUMPY Token. All rights reserved.</div>
                 <div className="text-yellow-400/60">Built with spite, coffee, and a lot of grumpiness ☕😤</div>
@@ -330,7 +320,7 @@ export default function FooterSection() {
                   Disclaimer
                 </motion.a>
               </motion.div>
-            </div>
+            </div> */}
             
             {/* Final Quote */}
             <motion.div 
@@ -341,7 +331,7 @@ export default function FooterSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-400 italic text-lg">
-                "In a world full of fake smiles, be <span className="text-yellow-400 font-bold">GRUMPY</span>."
+                © 2025 GRUMPY Token. All rights reserved.
               </p>
             </motion.div>
           </motion.div>
