@@ -31,35 +31,35 @@ export default function ArtGallery() {
     {
       id: 1,
       title: "Grumpy's Rage",
-      image: "/assets/grumpy1.png",
+      image: "/assets/grumpy1.webp",
       description: "Grumpy showing his true chaotic nature in the crypto world",
       row: 1
     },
     {
       id: 2,
       title: "Tiger's Den",
-      image: "/assets/grumpy2.png",
+      image: "/assets/grumpy2.webp",
       description: "Grumpy in his natural habitat - the trading floor",
       row: 1
     },
     {
       id: 3,
       title: "Solana Nights",
-      image: "/assets/grumpy3.png",
+      image: "/assets/grumpy3.webp",
       description: "Neon-lit Grumpy conquering the Solana blockchain",
       row: 2
     },
     {
       id: 4,
       title: "Chaos Theory",
-      image: "/assets/grumpy4.JPG",
+      image: "/assets/grumpy4.webp",
       description: "When Grumpy meets market volatility",
       row: 2
     },
     {
       id: 5,
       title: "Tiger's Triumph",
-      image: "/assets/grumpy5.JPG",
+      image: "/assets/grumpy5.webp",
       description: "Victory pose after a successful trade",
       row: 3
     },
@@ -73,14 +73,14 @@ export default function ArtGallery() {
     {
       id: 7,
       title: "Traditional Tiger",
-      image: "/assets/grumpy-vid1.MP4",
+      image: "/assets/grumpy-vid1.gif",
       description: "Hand-drawn Grumpy with traditional techniques",
       row: 4
     },
     {
       id: 8,
       title: "Meme Masterpiece",
-      image: "/assets/grumpy-vid2.MP4",
+      image: "/assets/grumpy-vid2.gif",
       description: "The ultimate Grumpy meme that broke the internet",
       row: 4
     }
