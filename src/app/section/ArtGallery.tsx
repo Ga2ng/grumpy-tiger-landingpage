@@ -88,24 +88,23 @@ export default function ArtGallery() {
 
 
 
-  // Responsive row grouping based on screen size and artwork count
+  // Responsive row grouping based on screen size
   const getResponsiveRows = () => {
     if (typeof window !== 'undefined') {
       const width = window.innerWidth;
-      const totalArtworks = artworks.length;
       
       if (width < 640) {
-        // Mobile: distribute evenly, max 3 rows
-        return Math.min(2, Math.ceil(totalArtworks / 2));
+        // Mobile: 2 rows
+        return 2;
       }
       if (width < 1024) {
-        // Tablet: distribute evenly, max 4 rows
-        return Math.min(3, Math.ceil(totalArtworks / 2));
+        // Tablet: 3 rows
+        return 3;
       }
-      // Desktop: distribute evenly
-      return Math.min(4, Math.ceil(totalArtworks / 2));
+      // Desktop: 4 rows
+      return 4;
     }
-    return Math.min(4, Math.ceil(artworks.length / 2)); // Default based on artwork count
+    return 4; // Default to 4 rows
   };
 
   const [rowCount, setRowCount] = useState(4);
@@ -134,20 +133,24 @@ export default function ArtGallery() {
     };
   }
 
-  // Group artworks by row - improved logic for uneven distribution
+  // Group artworks by row - each row shows all artworks but starts from different position
   const getRowArtworks = (rowNumber: number) => {
     const totalArtworks = artworks.length;
-    const itemsPerRow = Math.ceil(totalArtworks / rowCount);
-    const startIndex = (rowNumber - 1) * itemsPerRow;
-    const endIndex = Math.min(startIndex + itemsPerRow, totalArtworks);
     
-    // Get the original artworks for this row
-    const rowArtworks = artworks.slice(startIndex, endIndex);
+    // Create a rotated array for each row (different starting position)
+    const rotatedArtworks = [];
+    const startOffset = (rowNumber - 1) % totalArtworks;
     
-    // Create infinite loop by repeating the row artworks
+    // Rotate the array based on row number
+    for (let i = 0; i < totalArtworks; i++) {
+      const index = (i + startOffset) % totalArtworks;
+      rotatedArtworks.push(artworks[index]);
+    }
+    
+    // Create infinite loop by repeating the rotated artworks
     const repeated = [];
-    for (let i = 0; i < 8; i++) { // Repeat 8 times for smooth infinite loop
-      repeated.push(...rowArtworks);
+    for (let i = 0; i < 6; i++) { // Repeat 6 times for smooth infinite loop
+      repeated.push(...rotatedArtworks);
     }
     
     return repeated;
