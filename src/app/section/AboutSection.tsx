@@ -19,7 +19,7 @@ export default function AboutSection() {
         className="relative bg-gradient-to-br from-gray-800/60 via-gray-800/40 to-gray-900/60 backdrop-blur-lg rounded-3xl border border-gray-600/50 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Inner glow effect */}
@@ -33,7 +33,7 @@ export default function AboutSection() {
               style={{ color: '#FBC153' }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
+              transition={{ duration: 0.1, delay: 0.05 }}
               viewport={{ once: true }}
             >
               WHO IS GRUMPY?
@@ -47,7 +47,7 @@ export default function AboutSection() {
               className="relative z-20 order-1 lg:order-1"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.2, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.1, ease: "easeOut", delay: 0.1 }}
               viewport={{ once: true }}
             >
               <div className="relative">
@@ -97,7 +97,7 @@ export default function AboutSection() {
                 className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 backdrop-blur-sm rounded-2xl p-8 lg:p-12 border border-gray-600/40 relative overflow-hidden"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.2, delay: 0.3 }}
+                transition={{ duration: 0.1, delay: 0.15 }}
                 viewport={{ once: true }}
               >
                 {/* Content Glow */}
@@ -109,7 +109,7 @@ export default function AboutSection() {
                     className="text-xl lg:text-2xl leading-relaxed text-gray-300 mb-8"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.1, ease: "easeOut" }}
                   >
                     <motion.span 
                       className="text-yellow-400 font-bold text-2xl lg:text-3xl"

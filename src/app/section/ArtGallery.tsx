@@ -167,9 +167,40 @@ export default function ArtGallery() {
       <div ref={ref} className="relative">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 lg:mb-20">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6" style={{ color: '#FBC153' }}>
-            Art Gallery
-          </h2>
+          <motion.div 
+            className="flex items-center justify-center mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="flex items-center space-x-4 sm:space-x-6">
+              {/* GIF Tiger Logo */}
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 
+                              group cursor-pointer">
+                <Image 
+                  src="/assets/tigra_drop_cash.gif" 
+                  alt="Grumpy Tiger Logo" 
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+                {/* Hover glow effect hanya untuk GIF */}
+                <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/30 
+                                blur-md transition-all duration-500 group-hover:animate-pulse 
+                                rounded-full"></div>
+              </div>
+              
+              {/* Art Gallery Text */}
+              <div className="relative">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
+                               font-black tracking-tight"
+                    style={{ color: '#FBC153' }}>
+                  Art Gallery
+                </h2>
+              </div>
+            </div>
+          </motion.div>
+          
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             Grumpy has a full team of artists behind him, dropping fresh, custom pieces every single day.
             <br />

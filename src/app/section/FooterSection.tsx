@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { FaTelegram } from 'react-icons/fa';
@@ -32,100 +31,38 @@ export default function FooterSection() {
             className="object-cover"
             priority
           />
-                     {/* Overlay untuk menyatukan dengan theme */}
-           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80"></div>
-           <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/15 via-transparent to-orange-400/15"></div>
+          {/* Overlay untuk menyatukan dengan theme */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/15 via-transparent to-orange-400/15"></div>
         </div>
 
-        {/* Floating Particles pada Banner */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-yellow-400/40 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -15, 0],
-                opacity: [0.2, 0.6, 0.2],
-                scale: [1, 1.3, 1]
-              }}
-              transition={{
-                duration: 4 + Math.random() * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: Math.random() * 3
-              }}
-            />
-          ))}
+        {/* Content pada Banner Section */}
+        <div className="relative z-10 h-full flex items-center justify-center py-8 sm:py-0">
+          <div className="text-center px-4 sm:px-8 max-w-4xl mx-auto animate-fade-in">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 text-white drop-shadow-2xl leading-tight hover:scale-105 transition-transform duration-300 animate-fade-in-up">
+              <span className="block text-white mb-2">
+                Ready to Get
+              </span>
+              <span className="block bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+                GRUMPY?
+              </span>
+            </h2>
+            
+            <p className="text-base sm:text-lg lg:text-xl text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4 animate-fade-in-up animation-delay-200">
+              Join the most brutally honest community in crypto. No sugar-coating, just pure grumpiness.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 animate-fade-in-up animation-delay-400">
+              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base">
+                Buy GRUMPY Now
+              </button>
+              
+              <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300 backdrop-blur-sm bg-black/30 text-sm sm:text-base">
+                View Chart
+              </button>
+            </div>
+          </div>
         </div>
-
-                 {/* Content pada Banner Section */}
-         <div className="relative z-10 h-full flex items-center justify-center py-8 sm:py-0">
-           <motion.div 
-             className="text-center px-4 sm:px-8 max-w-4xl mx-auto"
-             initial={{ opacity: 0, y: 30 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.8 }}
-             viewport={{ once: true }}
-           >
-             <motion.h2 
-               className="text-3xl sm:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 text-white drop-shadow-2xl leading-tight"
-               whileHover={{ scale: 1.02 }}
-               transition={{ type: "spring", stiffness: 300 }}
-             >
-               <span className="block text-white mb-2">
-                 Ready to Get
-               </span>
-               <span className="block bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
-                 GRUMPY?
-               </span>
-             </motion.h2>
-             
-             <motion.p 
-               className="text-base sm:text-lg lg:text-xl text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-lg px-4"
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               transition={{ duration: 0.8, delay: 0.2 }}
-               viewport={{ once: true }}
-             >
-               Join the most brutally honest community in crypto. No sugar-coating, just pure grumpiness.
-             </motion.p>
-
-             <motion.div 
-               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.4 }}
-               viewport={{ once: true }}
-             >
-               <motion.button
-                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base"
-                 whileHover={{ scale: 1.05, y: -2 }}
-                 whileTap={{ scale: 0.95 }}
-               >
-                 Buy GRUMPY Now
-               </motion.button>
-               
-               <motion.button
-                 className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300 backdrop-blur-sm bg-black/30 text-sm sm:text-base"
-                 whileHover={{ scale: 1.05, y: -2 }}
-                 whileTap={{ scale: 0.95 }}
-               >
-                 View Chart
-               </motion.button>
-             </motion.div>
-           </motion.div>
-         </div>
-
-        {/* Transition Wave */}
-        {/* <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-20 fill-current text-gray-900" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-          </svg>
-        </div> */}
       </div>
 
       {/* SECTION 2: Interactive Footer Content */}
@@ -133,121 +70,81 @@ export default function FooterSection() {
         
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-yellow-400/6 to-orange-500/6 rounded-full blur-3xl"
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-r from-amber-500/4 to-yellow-400/4 rounded-full blur-2xl"
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 30, 0],
-              scale: [1, 0.8, 1]
-            }}
-            transition={{ 
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-          />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-yellow-400/6 to-orange-500/6 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-r from-amber-500/4 to-yellow-400/4 rounded-full blur-2xl animate-pulse"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-12 sm:py-16">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             
-            {/* Brand Section - Diperluas */}
-            <motion.div 
-              className="lg:col-span-2 text-center lg:text-left"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-500 bg-clip-text text-transparent"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                GRUMPY
-              </motion.div>
-              
-              <motion.p 
-                className="text-gray-300 mb-6 text-lg leading-relaxed max-w-lg"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Grumpy was born on Bonk.fun, now he’s running wild.
-                We back artists, builders, and anyone chasing the fun.
-                It’s not just a token. It’s a vibe.
-              </motion.p>
-              
-              
-              {/* Token Info */}
-              <motion.div 
-                className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 text-center lg:text-left mt-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-gradient-to-br from-yellow-400/10 to-orange-400/10 border border-yellow-400/30 rounded-lg p-2 sm:p-3 md:p-4">
-                  <div className="text-base sm:text-lg font-bold text-yellow-400 mb-0.5">SUPPLY</div>
-                  <div className="text-xs sm:text-sm text-gray-300">1,000,000,000</div>
-                  <div className="text-xs text-yellow-400 font-semibold">$GRUMPY</div>
+            {/* Brand Section dengan GIF berdampingan */}
+            <div className="lg:col-span-2 animate-fade-in-up animation-delay-100">
+              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+                {/* GIF Section */}
+                <div className="flex-shrink-0 animate-fade-in-up animation-delay-300">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 group">              
+                    {/* Main Container */}
+                    <div className="relative w-full h-full ">
+                      {/* GIF Container */}
+                      <div className="relative w-full h-full">
+                        <Image 
+                          src="/assets/tigra_ferrarri.gif" 
+                          alt="Grumpy Animation" 
+                          fill
+                          className="object-cover rounded-3xl"
+                          unoptimized
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-gradient-to-br from-orange-400/10 to-red-400/10 border border-orange-400/30 rounded-lg p-2 sm:p-3 md:p-4">
-                  <div className="text-base sm:text-lg font-bold text-orange-400 mb-0.5">LP BURNT</div>
-                  <div className="text-xs sm:text-sm text-gray-300">100%</div>
-                  <div className="text-xs text-orange-400 font-semibold">PERMANENT</div>
-                </div>
-                <div className="bg-gradient-to-br from-red-400/10 to-pink-400/10 border border-red-400/30 rounded-lg p-2 sm:p-3 md:p-4">
-                  <div className="text-base sm:text-lg font-bold text-red-400 mb-0.5">MINT & FREEZE</div>
-                  <div className="text-xs sm:text-sm text-gray-300">REVOKED</div>
-                  <div className="text-xs text-red-400 font-semibold">SECURE</div>
-                </div>
-              </motion.div>
 
-            </motion.div>
+                {/* Brand Content */}
+                <div className="flex-1 text-center lg:text-left animate-fade-in-up animation-delay-500">
+                  <div className="text-4xl lg:text-5xl font-black mb-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                    GRUMPY
+                  </div>
+                  
+                  <p className="text-gray-300 mb-6 text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Grumpy was born on Bonk.fun, now he's running wild.
+                    We back artists, builders, and anyone chasing the fun.
+                    It's not just a token. It's a vibe.
+                  </p>
+                  
+                  {/* Token Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center lg:text-left mt-6 animate-fade-in-up animation-delay-700">
+                    <div className="bg-gradient-to-br from-yellow-400/10 to-orange-400/10 border border-yellow-400/30 rounded-lg p-2 sm:p-3 md:p-4 backdrop-blur-sm hover:border-yellow-400/60 transition-all duration-300">
+                      <div className="text-base sm:text-lg font-bold text-yellow-400 mb-0.5">SUPPLY</div>
+                      <div className="text-xs sm:text-sm text-gray-300">1,000,000,000</div>
+                      <div className="text-xs text-yellow-400 font-semibold">$GRUMPY</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-orange-400/10 to-red-400/10 border border-orange-400/30 rounded-lg p-2 sm:p-3 md:p-4 backdrop-blur-sm hover:border-orange-400/60 transition-all duration-300">
+                      <div className="text-base sm:text-lg font-bold text-orange-400 mb-0.5">LP BURNT</div>
+                      <div className="text-xs sm:text-sm text-gray-300">100%</div>
+                      <div className="text-xs text-orange-400 font-semibold">PERMANENT</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-red-400/10 to-pink-400/10 border border-red-400/30 rounded-lg p-2 sm:p-3 md:p-4 backdrop-blur-sm hover:border-red-400/60 transition-all duration-300">
+                      <div className="text-base sm:text-lg font-bold text-red-400 mb-0.5">MINT & FREEZE</div>
+                      <div className="text-xs sm:text-sm text-gray-300">REVOKED</div>
+                      <div className="text-xs text-red-400 font-semibold">SECURE</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            {/* Social Links - diperluas agar seimbang */}
-            <motion.div 
-              className="lg:col-span-2 text-center lg:text-left flex flex-col items-center lg:items-start justify-center"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
+            {/* Social Links */}
+            <div className="lg:col-span-1 text-center lg:text-left flex flex-col items-center lg:items-start justify-center animate-fade-in-up animation-delay-600">
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">SOCIALS</h3>
               <h4 className="text-lg font-semibold mb-6 text-gray-300">Join the GRUMPY Community</h4>
-              <div className="grid grid-cols-2 gap-3 mb-6 max-w-xs w-full mx-auto lg:mx-0">
+              <div className="grid grid-cols-1 gap-3 mb-6 max-w-xs w-full mx-auto lg:mx-0">
                 {socialLinks.map((social, index) => (
-                  <motion.a
+                  <a
                     key={social.name}
                     href={social.href}
-                    className="group relative p-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-yellow-400/30 rounded-xl flex items-center gap-3 hover:from-yellow-400/10 hover:to-orange-400/10 hover:border-yellow-400/60 transition-all duration-300"
-                    whileHover={{ 
-                      scale: 1.02,
-                      y: -2,
-                      boxShadow: "0 8px 25px rgba(251, 193, 83, 0.15)"
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 * index }}
-                    viewport={{ once: true }}
+                    className="group relative p-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-yellow-400/30 rounded-xl flex items-center gap-3 hover:from-yellow-400/10 hover:to-orange-400/10 hover:border-yellow-400/60 transition-all duration-300 backdrop-blur-sm hover:scale-105 hover:-translate-y-1 hover:shadow-lg animate-fade-in-up"
+                    style={{ animationDelay: `${800 + index * 100}ms` }}
                   >
                     <span className="text-xl group-hover:scale-110 transition-transform duration-200">
                       {typeof social.icon === 'string' ? social.icon : social.icon}
@@ -255,88 +152,101 @@ export default function FooterSection() {
                     <span className="text-sm font-medium text-gray-300 group-hover:text-yellow-400 transition-colors">
                       {social.name}
                     </span>
-                  </motion.a>
+                  </a>
                 ))}
               </div>
               
-              <motion.div 
-                className="text-center lg:text-left"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                viewport={{ once: true }}
-              >
+              <div className="text-center lg:text-left animate-fade-in-up animation-delay-1000">
                 <div className="text-yellow-400 font-bold mb-2">Contract Address:</div>
-                <div className="text-xs text-gray-400 bg-gray-800/50 p-2 rounded-lg font-mono break-all">
+                <div className="text-xs text-gray-400 bg-gray-800/50 p-2 rounded-lg font-mono break-all backdrop-blur-sm border border-gray-700/50">
                   Coming Soon...
                 </div>
-              </motion.div>
-
-            </motion.div>
+              </div>
+            </div>
           </div>
 
           {/* Bottom Section */}
-          <motion.div 
-            className="pt-8 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {/* <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-              <div className="text-gray-400 text-sm text-center lg:text-left">
-                <div className="mb-2">© 2024 GRUMPY Token. All rights reserved.</div>
-                <div className="text-yellow-400/60">Built with spite, coffee, and a lot of grumpiness ☕😤</div>
-              </div>
-              
-              <motion.div 
-                className="flex flex-wrap items-center justify-center gap-6 text-sm"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                viewport={{ once: true }}
-              >
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-yellow-400 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Terms of Service
-                </motion.a>
-                <span className="text-gray-600">|</span>
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-yellow-400 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Privacy Policy
-                </motion.a>
-                <span className="text-gray-600">|</span>
-                <motion.a 
-                  href="#" 
-                  className="text-gray-400 hover:text-yellow-400 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Disclaimer
-                </motion.a>
-              </motion.div>
-            </div> */}
-            
+          <div className="pt-8 text-center animate-fade-in-up animation-delay-1200">            
             {/* Final Quote */}
-            <motion.div 
-              className="text-center mt-8 pt-6 border-t border-gray-800"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="text-center mt-8 pt-6 border-t border-gray-800">
               <p className="text-gray-400 italic text-lg">
                 © 2025 GRUMPY Token. All rights reserved.
               </p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .animation-delay-100 {
+          animation-delay: 100ms;
+        }
+        
+        .animation-delay-200 {
+          animation-delay: 200ms;
+        }
+        
+        .animation-delay-300 {
+          animation-delay: 300ms;
+        }
+        
+        .animation-delay-400 {
+          animation-delay: 400ms;
+        }
+        
+        .animation-delay-500 {
+          animation-delay: 500ms;
+        }
+        
+        .animation-delay-600 {
+          animation-delay: 600ms;
+        }
+        
+        .animation-delay-700 {
+          animation-delay: 700ms;
+        }
+        
+        .animation-delay-800 {
+          animation-delay: 800ms;
+        }
+        
+        .animation-delay-1000 {
+          animation-delay: 1000ms;
+        }
+        
+        .animation-delay-1200 {
+          animation-delay: 1200ms;
+        }
+      `}</style>
     </footer>
   );
 }
