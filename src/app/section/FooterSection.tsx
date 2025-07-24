@@ -32,8 +32,9 @@ export default function FooterSection() {
             priority
           />
           {/* Overlay untuk menyatukan dengan theme */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/15 via-transparent to-orange-400/15"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/25 via-transparent to-orange-400/25"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         {/* Content pada Banner Section */}
