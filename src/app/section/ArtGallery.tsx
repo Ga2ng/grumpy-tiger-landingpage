@@ -72,17 +72,45 @@ export default function ArtGallery() {
     // },
     {
       id: 7,
-      title: "Traditional Tiger",
-      image: "/assets/grumpy-vid1.gif",
-      description: "Hand-drawn Grumpy with traditional techniques",
-      row: 4
+      title: "Grumpy's Fury",
+      image: "/assets/grumpy7.webp",
+      description: "Grumpy unleashing his wild side in the crypto jungle",
+      row: 1
     },
     {
       id: 8,
+      title: "Tiger's Roar",
+      image: "/assets/grumpy8.webp",
+      description: "The mighty roar that shakes the blockchain",
+      row: 2
+    },
+    {
+      id: 9,
+      title: "Grumpy's Domain",
+      image: "/assets/grumpy9.webp",
+      description: "Ruling over the digital kingdom with grumpy authority",
+      row: 3
+    },
+    {
+      id: 10,
+      title: "Tiger's Legacy",
+      image: "/assets/grumpy10.webp",
+      description: "The legendary Grumpy that will be remembered forever",
+      row: 4
+    },
+    {
+      id: 11,
+      title: "Traditional Tiger",
+      image: "/assets/grumpy-vid1.gif",
+      description: "Hand-drawn Grumpy with traditional techniques",
+      row: 1
+    },
+    {
+      id: 12,
       title: "Meme Masterpiece",
       image: "/assets/grumpy-vid2.gif",
       description: "The ultimate Grumpy meme that broke the internet",
-      row: 4
+      row: 2
     }
   ];
 
